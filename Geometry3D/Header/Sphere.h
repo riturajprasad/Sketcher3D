@@ -13,7 +13,11 @@ public:
 	Sphere(const double&);
 	~Sphere();
 
-	std::vector<std::pair<Point, Point>> getCoordinates() const override;
+	std::vector<std::vector<Point>> getCoordinates() const override;
 	double getradius() const;
+
+private:
+	const double PI = 3.14159265358979323846;
+	const int N = 36;
 };
 GEOMETRY3D_API std::ostream& operator<<(std::ostream&, const Sphere&);

@@ -19,7 +19,7 @@ public:
 	Cuboid(const double&);
 	~Cuboid();
 
-	std::vector<std::pair<Point, Point>> getCoordinates() const override;
+	std::vector<std::vector<Point>> getCoordinates() const override;
 	double getlength() const;
 	double getbreadth() const;
 	double getheight() const;

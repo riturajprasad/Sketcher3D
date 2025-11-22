@@ -10,5 +10,5 @@ public:
 	virtual ~Shape();
 
 	std::string getName() const override;
-	virtual std::vector<std::pair<Point, Point>> getCoordinates() const = 0;
+	virtual std::vector<std::vector<Point>> getCoordinates() const = 0;
 };

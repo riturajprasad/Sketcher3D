@@ -18,9 +18,9 @@ top_p3(s, s, s), top_p4(s, 0, s) { }
 
 Cuboid::~Cuboid() {}
 
-std::vector<std::pair<Point, Point>> Cuboid::getCoordinates() const
+std::vector<std::vector<Point>> Cuboid::getCoordinates() const
 {
-	std::vector<std::pair<Point, Point>> cord;
+	std::vector<std::vector<Point>> cord;
 	cord.push_back({ bottom_p1, bottom_p4 });
 	cord.push_back({ bottom_p4, bottom_p3 });
 	cord.push_back({ bottom_p3, bottom_p2 });
@@ -43,10 +43,10 @@ double Cuboid::getheight() const { return (top_p1.z - bottom_p1.z); }
 std::ostream& operator<<(std::ostream& out, const Cuboid& b)
 {
 	out << b.getName() << "\n";
-	for (auto cord : b.getCoordinates())
+	for (auto &it : b.getCoordinates())
 	{
-		out << cord.first.x << " " << cord.first.y << " " << cord.first.z << "\n";
-		out << cord.second.x << " " << cord.second.y << " " << cord.second.z << "\n\n\n";
+		for (auto& cord : it) out << cord.x << " " << cord.y << " " << cord.z << "\n";
+		out << "\n\n";
 	}
 	return out;
 }

@@ -12,8 +12,8 @@ void File::write(vector<unique_ptr<Object_3D>>& myShape)
 	}
 	for (auto& it : myShape)
 	{
-		if (auto p = dynamic_cast<Point*>(it.get())) out << *p;
-		if (auto b = dynamic_cast<Cuboid*>(it.get())) out << *b;
+		//if (auto p = dynamic_cast<Point*>(it.get())) out << *p;
+		//if (auto b = dynamic_cast<Cuboid*>(it.get())) out << *b;
 		if (auto s = dynamic_cast<Sphere*>(it.get())) out << *s;
 	}
 	out.close();
