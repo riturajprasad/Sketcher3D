@@ -11,52 +11,88 @@ Sphere::~Sphere() {}
 std::vector<std::vector<Point>> Sphere::getCoordinates() const
 {
 	std::vector<std::vector<Point>> cord;
-	std::vector<Point> p36;
-	for (int i = 0; i < N; ++i) {
+	std::vector<Point> p72;
+	for (int i = 0; i <= N; ++i) {
 		double theta = 2.0 * PI * i / N;
 		double x = center.x + getradius() * std::cos(theta);
 		double y = center.y + getradius() * std::sin(theta);
 		double z = center.z;
-		p36.emplace_back(x, y, z);
+		p72.emplace_back(x, y, z);
 	}
-	cord.push_back(p36);
-	p36.clear();
-	for (int i = 0; i < N; ++i) {
+	cord.push_back(p72);
+	p72.clear();
+	for (int i = 0; i <= N; ++i) {
 		double theta = 2.0 * PI * i / N;
 		double x = center.x + getradius() * std::cos(theta);
 		double y = center.y;
 		double z = center.z + getradius() * std::sin(theta);
-		p36.emplace_back(x, y, z);
+		p72.emplace_back(x, y, z);
 	}
-	cord.push_back(p36);
-	p36.clear();
-	for (int i = 0; i < N; ++i) {
+	cord.push_back(p72);
+	p72.clear();
+	for (int i = 0; i <= N; ++i) {
 		double theta = 2.0 * PI * i / N;
 		double x = center.x;
 		double y = center.y + getradius() * std::cos(theta);
 		double z = center.z + getradius() * std::sin(theta);
-		p36.emplace_back(x, y, z);
+		p72.emplace_back(x, y, z);
 	}
-	cord.push_back(p36);
-	p36.clear();
-	for (int i = 0; i < N; ++i) {
+	cord.push_back(p72);
+	p72.clear();
+	for (int i = 0; i <= N; ++i) {
 		double theta = 2.0 * PI * i / N;
 		double x = center.x + (std::sqrt(3.0) * getradius() / 2.0) * std::cos(theta);
 		double y = center.y + (std::sqrt(3.0) * getradius() / 2.0) * std::sin(theta);
 		double z = center.z + (getradius() / 2.0);
-		p36.emplace_back(x, y, z);
+		p72.emplace_back(x, y, z);
 	}
-	cord.push_back(p36);
-	p36.clear();
-	for (int i = 0; i < N; ++i) {
+	cord.push_back(p72);
+	p72.clear();
+	for (int i = 0; i <= N; ++i) {
 		double theta = 2.0 * PI * i / N;
 		double x = center.x + (std::sqrt(3.0) * getradius() / 2.0) * std::cos(theta);
 		double y = center.y + (std::sqrt(3.0) * getradius() / 2.0) * std::sin(theta);
 		double z = center.z - (getradius() / 2.0);
-		p36.emplace_back(x, y, z);
+		p72.emplace_back(x, y, z);
 	}
-	cord.push_back(p36);
-	p36.clear();
+	cord.push_back(p72);
+	p72.clear();
+	for (int i = 0; i <= N; ++i) {
+		double theta = 2.0 * PI * i / N;
+		double x = center.x + (std::sqrt(3.0) * getradius() / 2.0) * std::cos(theta);
+		double y = center.y + (getradius() / 2.0);
+		double z = center.z + (std::sqrt(3.0) * getradius() / 2.0) * std::sin(theta);
+		p72.emplace_back(x, y, z);
+	}
+	cord.push_back(p72);
+	p72.clear();
+	for (int i = 0; i <= N; ++i) {
+		double theta = 2.0 * PI * i / N;
+		double x = center.x + (std::sqrt(3.0) * getradius() / 2.0) * std::cos(theta);
+		double y = center.y - (getradius() / 2.0);
+		double z = center.z + (std::sqrt(3.0) * getradius() / 2.0) * std::sin(theta);
+		p72.emplace_back(x, y, z);
+	}
+	cord.push_back(p72);
+	p72.clear();
+	for (int i = 0; i <= N; ++i) {
+		double theta = 2.0 * PI * i / N;
+		double x = center.x + (getradius() / 2.0);
+		double y = center.y + (std::sqrt(3.0) * getradius() / 2.0) * std::cos(theta);
+		double z = center.z + (std::sqrt(3.0) * getradius() / 2.0) * std::sin(theta);
+		p72.emplace_back(x, y, z);
+	}
+	cord.push_back(p72);
+	p72.clear();
+	for (int i = 0; i <= N; ++i) {
+		double theta = 2.0 * PI * i / N;
+		double x = center.x - (getradius() / 2.0);
+		double y = center.y + (std::sqrt(3.0) * getradius() / 2.0) * std::cos(theta);
+		double z = center.z + (std::sqrt(3.0) * getradius() / 2.0) * std::sin(theta);
+		p72.emplace_back(x, y, z);
+	}
+	cord.push_back(p72);
+	p72.clear();
 	return cord;
 }
 

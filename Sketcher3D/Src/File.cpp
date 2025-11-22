@@ -14,7 +14,8 @@ void File::write(vector<unique_ptr<Object_3D>>& myShape)
 	{
 		//if (auto p = dynamic_cast<Point*>(it.get())) out << *p;
 		//if (auto b = dynamic_cast<Cuboid*>(it.get())) out << *b;
-		if (auto s = dynamic_cast<Sphere*>(it.get())) out << *s;
+		//if (auto s = dynamic_cast<Sphere*>(it.get())) out << *s;
+		if (auto c = dynamic_cast<Cylinder*>(it.get())) out << *c;
 	}
 	out.close();
 	std::cout << "File saved successfully!\n";

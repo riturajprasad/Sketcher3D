@@ -1,4 +1,5 @@
 #include "GenrateObj.h"
+using namespace std;
 
 void GenrateObj::genrate3D()
 {
@@ -6,7 +7,7 @@ void GenrateObj::genrate3D()
 	myShape.push_back(make_unique<Point>(0, 0, 0));
 	myShape.push_back(make_unique<Cuboid>(1, 2, 3));
 	myShape.push_back(make_unique<Sphere>(2));
-	//myShape.push_back(make_unique<Box>(p1, p3, 3));
+	myShape.push_back(make_unique<Cylinder>(3, 5));
 
 	File file;
 	file.write(myShape);
