@@ -135,6 +135,7 @@
     <ClInclude Include="Header\GenrateObj.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="3D_Obj.dat" />
     <None Include="Rcr\Box.dat" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

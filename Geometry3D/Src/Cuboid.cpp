@@ -42,7 +42,7 @@ double Cuboid::getheight() const { return (top_p1.z - bottom_p1.z); }
 
 std::ostream& operator<<(std::ostream& out, const Cuboid& b)
 {
-	//out << b.getName() << "\n";
+	out << b.getName() << "\n";
 	for (auto cord : b.getCoordinates())
 	{
 		out << cord.first.x << " " << cord.first.y << " " << cord.first.z << "\n";

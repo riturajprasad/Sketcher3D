@@ -37,5 +37,8 @@
     <None Include="Rcr\Box.dat">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="3D_Obj.dat">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

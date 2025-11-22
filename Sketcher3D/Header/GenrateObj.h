@@ -1,6 +1,7 @@
 #pragma once
 #include "Object_3D.h"
 #include "Cuboid.h"
+#include "Sphere.h"
 #include "File.h"
 using namespace std;
 
