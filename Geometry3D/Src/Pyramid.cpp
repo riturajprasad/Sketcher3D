@@ -23,7 +23,10 @@ std::vector<std::vector<Point>> Pyramid::getCoordinates() const
 double Pyramid::getlength() const { return std::fabs(p4.x - p1.x); }
 double Pyramid::getbreadth() const { return std::fabs(p2.y - p1.y); }
 double Pyramid::getheight() const { return height; }
-double Pyramid::getslant_height() const { return std::fabs(h_pt.x - p1.x); }
+double Pyramid::getslant_height() const
+{
+	return std::fabs(std::sqrt(pow((h_pt.x - p1.x), 2) + pow((h_pt.y - p1.y), 2) + pow((h_pt.z - p1.z), 2))); 
+}
 
 std::ostream& operator<<(std::ostream& out, const Pyramid& p)
 {

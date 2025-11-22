@@ -13,4 +13,7 @@ void GenrateObj::genrate3D()
 
 	File file;
 	file.write(myShape);
+
+	MyFile_skt skt;
+	skt.write(myShape);
 }

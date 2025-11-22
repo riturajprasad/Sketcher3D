@@ -129,13 +129,16 @@
     <ClCompile Include="Src\File.cpp" />
     <ClCompile Include="Src\GenrateObj.cpp" />
     <ClCompile Include="Src\Main.cpp" />
+    <ClCompile Include="Src\MyFile_skt.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\File.h" />
     <ClInclude Include="Header\GenrateObj.h" />
+    <ClInclude Include="Header\MyFile_skt.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="3D_Obj.dat" />
+    <None Include="My3D_Obj.skt" />
     <None Include="Rcr\Box.dat" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

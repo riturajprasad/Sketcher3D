@@ -28,7 +28,10 @@ std::vector<std::vector<Point>> Cone::getCoordinates() const
 
 double Cone::getradius() const { return std::fabs(surface.x - center.x); }
 double Cone::getheight() const { return height; }
-double Cone::getslant_height() const { return std::fabs(h_pt.x - center.x); }
+double Cone::getslant_height() const
+{
+	return std::fabs(std::sqrt(pow((h_pt.x - surface.x), 2) + pow((h_pt.y - surface.y), 2) + pow((h_pt.z - surface.z), 2)));
+}
 
 std::ostream& operator<<(std::ostream& out, const Cone& c)
 {

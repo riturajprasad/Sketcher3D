@@ -1,0 +1,12 @@
+Point
+0 0 0
+Cuboid
+1 2 3
+Sphere
+2
+Sphere
+3 5
+Pyramid
+3 4 6 6.5
+Cone
+3 5 5.83095

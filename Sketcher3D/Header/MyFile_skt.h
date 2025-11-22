@@ -5,11 +5,9 @@
 #include "Cylinder.h"
 #include "Pyramid.h"
 #include "Cone.h"
-#include "File.h"
-#include "MyFile_skt.h"
 
-class GenrateObj
+class MyFile_skt
 {
 public:
-	void genrate3D();
+	void write(std::vector<std::unique_ptr<Object_3D>>& myShape);
 };

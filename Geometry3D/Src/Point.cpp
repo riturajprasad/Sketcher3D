@@ -15,6 +15,6 @@ bool Point::operator==(const Point& p2) const
 std::ostream& operator<<(std::ostream& out, const Point& p)
 {
 	out << p.getName() << "\n";
-	out << p.x << " " << p.y << " " << p.z << "\n\n";
+	out << p.x << " " << p.y << " " << p.z << "\n";
 	return out;
 }
