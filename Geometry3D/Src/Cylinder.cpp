@@ -59,7 +59,7 @@ double Cylinder::getheight() const { return height; }
 
 std::ostream& operator<<(std::ostream& out, const Cylinder& c)
 {
-	//out << c.getName() << "\n";
+	out << c.getName() << "\n";
 	for (auto& it : c.getCoordinates())
 	{
 		for (auto& cord : it) out << cord.x << " " << cord.y << " " << cord.z << "\n";

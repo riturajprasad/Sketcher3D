@@ -8,6 +8,7 @@ private:
 	Point center;
 	Point surface;
 	double height;
+	Point h_pt;
 
 public:
 	Cone(const Point&, const Point&, const double&);
@@ -17,6 +18,7 @@ public:
 	std::vector<std::vector<Point>> getCoordinates() const override;
 	double getradius() const;
 	double getheight() const;
+	double getslant_height() const;
 
 private:
 	const double PI = 3.14159265358979323846;

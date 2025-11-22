@@ -10,6 +10,7 @@ private:
 	Point p2;
 	Point p4;
 	double height;
+	Point h_pt;
 
 public:
 	Pyramid(const Point&, const Point&, const double&);
@@ -17,7 +18,9 @@ public:
 	~Pyramid();
 
 	std::vector<std::vector<Point>> getCoordinates() const override;
-	double getradius() const;
+	double getlength() const;
+	double getbreadth() const;
 	double getheight() const;
+	double getslant_height() const;
 };
 GEOMETRY3D_API std::ostream& operator<<(std::ostream&, const Pyramid&);

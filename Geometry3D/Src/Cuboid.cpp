@@ -1,12 +1,14 @@
 #include "pch.h"
 #include "Cuboid.h"
 
-Cuboid::Cuboid(const Point& p1, const Point& p3, const double& height) : Shape("Cuboid"), bottom_p1(p1), bottom_p3(p3),
+Cuboid::Cuboid(const Point& p1, const Point& p3, const double& height) : Shape("Cuboid"),
+bottom_p1(p1), bottom_p3(p3),
 bottom_p2(p1.x, p3.y, p1.z), bottom_p4(p3.x, p1.y, p1.z),
 top_p1(p1.x, p1.y, height), top_p2(p1.x, p3.y, height),
 top_p3(p3.x, p3.y, height), top_p4(p3.x, p1.y, height) { }
 
-Cuboid::Cuboid(const double& l, const double& b, const double& h) : Shape("Cuboid"), bottom_p1(0, 0, 0), bottom_p3(l, b, 0),
+Cuboid::Cuboid(const double& l, const double& b, const double& h) : Shape("Cuboid"),
+bottom_p1(0, 0, 0), bottom_p3(l, b, 0),
 bottom_p2(0, b, 0), bottom_p4(l, 0, 0),
 top_p1(0, 0, h), top_p2(0, b, h),
 top_p3(l, b, h), top_p4(l, 0, h) { }
@@ -36,9 +38,9 @@ std::vector<std::vector<Point>> Cuboid::getCoordinates() const
 	return cord;
 }
 
-double Cuboid::getlength() const { return (bottom_p4.x - bottom_p1.x); }
-double Cuboid::getbreadth() const { return (bottom_p2.y - bottom_p1.y); }
-double Cuboid::getheight() const { return (top_p1.z - bottom_p1.z); }
+double Cuboid::getlength() const { return std::fabs(bottom_p4.x - bottom_p1.x); }
+double Cuboid::getbreadth() const { return std::fabs(bottom_p2.y - bottom_p1.y); }
+double Cuboid::getheight() const { return std::fabs(top_p1.z - bottom_p1.z); }
 
 std::ostream& operator<<(std::ostream& out, const Cuboid& b)
 {
