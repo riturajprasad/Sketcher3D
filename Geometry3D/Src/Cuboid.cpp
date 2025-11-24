@@ -23,14 +23,8 @@ Cuboid::~Cuboid() {}
 std::vector<std::vector<Point>> Cuboid::getCoordinates() const
 {
 	std::vector<std::vector<Point>> cord;
-	cord.push_back({ bottom_p1, bottom_p4 });
-	cord.push_back({ bottom_p4, bottom_p3 });
-	cord.push_back({ bottom_p3, bottom_p2 });
-	cord.push_back({ bottom_p2, bottom_p1 });
-	cord.push_back({ top_p1, top_p4 });
-	cord.push_back({ top_p4, top_p3 });
-	cord.push_back({ top_p3, top_p2 });
-	cord.push_back({ top_p2, top_p1 });
+	cord.push_back({ bottom_p1, bottom_p2, bottom_p3, bottom_p4, bottom_p1 });
+	cord.push_back({ top_p1, top_p2, top_p3, top_p4, top_p1 });
 	cord.push_back({ bottom_p1, top_p1 });
 	cord.push_back({ bottom_p4, top_p4 });
 	cord.push_back({ bottom_p3, top_p3 });
