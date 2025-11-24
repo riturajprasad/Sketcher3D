@@ -1,13 +1,18 @@
 #include "GenrateObj.h"
+#include <unordered_map>
 using namespace std;
 
 void GenrateObj::genrate3D()
 {
-	vector<unique_ptr<Object_3D>> myShape;
+	unordered_map<string, vector<unique_ptr<Shape>>> AllShapes;
+	//vector<unique_ptr<Shape>> myShape;
 	MyFile_skt skt;
-	skt.read("My3D_Obj.skt", myShape);
-	skt.write(myShape);
+	//skt.read("My3D_Obj.skt", myShape);
+	//skt.write(myShape);
+	skt.read_map("My3D_Obj.skt", AllShapes);
+	skt.write_map(AllShapes);
 
 	File file;
-	file.write(myShape);
+	//file.write(myShape);
+	file.write_map(AllShapes);
 }

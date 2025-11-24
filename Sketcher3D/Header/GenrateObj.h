@@ -1,5 +1,5 @@
 #pragma once
-#include "Object_3D.h"
+#include "Shape.h"
 #include "Cuboid.h"
 #include "Sphere.h"
 #include "Cylinder.h"

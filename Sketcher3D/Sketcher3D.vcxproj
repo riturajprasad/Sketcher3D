@@ -138,8 +138,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="3D_Obj.dat" />
+    <None Include="3D_Objmap.dat" />
     <None Include="My3D_Obj.skt" />
     <None Include="My3D_Obj2.skt" />
+    <None Include="My3D_Objmap.skt" />
     <None Include="Rcr\Box.dat" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

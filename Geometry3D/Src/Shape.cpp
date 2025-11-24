@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Shape.h"
 
-Shape::Shape(const std::string& n) : Object_3D(n) {}
+Shape::Shape(const std::string& n) : Shape(n) {}
 
 Shape::~Shape() {}
 

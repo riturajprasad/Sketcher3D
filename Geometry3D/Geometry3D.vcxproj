@@ -157,7 +157,6 @@
     <ClInclude Include="Header\Export.h" />
     <ClInclude Include="Header\framework.h" />
     <ClInclude Include="Header\Geometry3D.h" />
-    <ClInclude Include="Header\Object_3D.h" />
     <ClInclude Include="Header\pch.h" />
     <ClInclude Include="Header\Point.h" />
     <ClInclude Include="Header\Pyramid.h" />
@@ -170,7 +169,6 @@
     <ClCompile Include="Src\Cylinder.cpp" />
     <ClCompile Include="Src\dllmain.cpp" />
     <ClCompile Include="Src\Geometry3D.cpp" />
-    <ClCompile Include="Src\Object_3D.cpp" />
     <ClCompile Include="Src\pch.cpp" />
     <ClCompile Include="Src\Point.cpp" />
     <ClCompile Include="Src\Pyramid.cpp" />

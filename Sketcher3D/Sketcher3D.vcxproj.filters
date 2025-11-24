@@ -52,5 +52,11 @@
     <None Include="My3D_Obj2.skt">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="3D_Objmap.dat">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="My3D_Objmap.skt">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

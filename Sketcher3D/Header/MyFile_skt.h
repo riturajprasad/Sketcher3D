@@ -1,14 +1,18 @@
 #pragma once
-#include "Object_3D.h"
+#include "Shape.h"
 #include "Cuboid.h"
 #include "Sphere.h"
 #include "Cylinder.h"
 #include "Pyramid.h"
 #include "Cone.h"
+#include <unordered_map>
+using namespace std;
 
 class MyFile_skt
 {
 public:
-	void write(std::vector<std::unique_ptr<Object_3D>>& myShape);
-	void read(const std::string& filename, std::vector<std::unique_ptr<Object_3D>>& myShape);
+	void write(vector<unique_ptr<Shape>>& myShape);
+	void read(const string& filename, vector<unique_ptr<Shape>>& myShape);
+	void write_map(unordered_map<string, vector<unique_ptr<Shape>>>& AllShapes);
+	void read_map(const std::string& filename, unordered_map<string, vector<unique_ptr<Shape>>>& AllShapes);
 };
