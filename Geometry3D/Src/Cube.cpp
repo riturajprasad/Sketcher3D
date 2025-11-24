@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Cube.h"
 
-Cube::Cube(const std::string& name = "Cube", const double& s) : Shape(name), mSide(s) {}
+Cube::Cube(const double& s, const std::string& name) : Shape(name), mSide(s) {}
 Cube::~Cube() {}
 
 std::vector<std::vector<Point>> Cube::getCoordinates() const

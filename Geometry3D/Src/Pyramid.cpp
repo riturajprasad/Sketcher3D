@@ -2,7 +2,7 @@
 #include "Pyramid.h"
 #include <cmath>
 
-Pyramid::Pyramid(const std::string& name = "Pyramid", const double& l, const double& b, const double& h) :
+Pyramid::Pyramid(const double& l, const double& b, const double& h, const std::string& name) :
 Shape(name), mBaseLength(l), mBaseBreadth(b), mHeight(h) { }
 Pyramid::~Pyramid() {}
 
@@ -24,8 +24,8 @@ std::vector<std::vector<Point>> Pyramid::getCoordinates() const
 void Pyramid::save(std::ostream& fout) const
 {
 	fout << getName() << "\n"
-		 << "l = " << getlength() << " "
-		 << "b = " << getbreadth() << " "
+		 << "l = " << getlength() << "| "
+		 << "b = " << getbreadth() << "| "
 		 << "h = " << getheight() << "\n";
 }
 void Pyramid::saveForGnu(std::ostream& fout) const

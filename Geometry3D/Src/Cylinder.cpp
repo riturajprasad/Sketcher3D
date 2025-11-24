@@ -2,7 +2,7 @@
 #include "Cylinder.h"
 #include <cmath>
 
-Cylinder::Cylinder(const std::string& name = "Cylinder", const double& r, const double& h) : Shape(name),
+Cylinder::Cylinder(const double& r, const double& h, const std::string& name) : Shape(name),
 mRadius(r), mHeight(h) { }
 Cylinder::~Cylinder() {}
 
@@ -53,7 +53,7 @@ std::vector<std::vector<Point>> Cylinder::getCoordinates() const
 void Cylinder::save(std::ostream& fout) const
 {
 	fout << getName() << "\n"
-		 << "r = " << getradius() << " "
+		 << "r = " << getradius() << "| "
 		 << "h = " << getheight() << "\n";
 }
 void Cylinder::saveForGnu(std::ostream& fout) const

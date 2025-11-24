@@ -2,7 +2,7 @@
 #include "Cone.h"
 #include <cmath>
 
-Cone::Cone(const std::string& name = "Cone", const double& r, const double& h) : Shape(name), 
+Cone::Cone(const double& r, const double& h, const std::string& name) : Shape(name),
 mRadius(r), mHeight(h) { }
 Cone::~Cone() {}
 
@@ -26,7 +26,7 @@ std::vector<std::vector<Point>> Cone::getCoordinates() const
 void Cone::save(std::ostream& fout) const
 {
 	fout << getName() << "\n"
-		 << "r = " << getradius() << " "
+		 << "r = " << getradius() << "| "
 		 << "h = " << getheight() << "\n";
 }
 void Cone::saveForGnu(std::ostream& fout) const

@@ -8,7 +8,7 @@ private:
 	double mRadius;
 
 public:
-	Sphere(const std::string& name, const double& r);
+	Sphere(const double& r, const std::string& name = "Sphere");
 	~Sphere();
 
 	std::vector<std::vector<Point>> getCoordinates() const override;

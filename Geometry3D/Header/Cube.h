@@ -7,7 +7,7 @@ class GEOMETRY3D_API Cube : public Shape
 private:
 	double mSide;
 public:
-	Cube(const std::string& name, const double& s);
+	Cube(const double& s, const std::string& name = "Cube");
 	~Cube();
 
 	std::vector<std::vector<Point>> getCoordinates() const override;

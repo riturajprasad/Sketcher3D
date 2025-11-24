@@ -9,7 +9,7 @@ private:
 	double mHeight;
 
 public:
-	Cylinder(const std::string& name, const double& r, const double& h);
+	Cylinder(const double& r, const double& h, const std::string& name = "Cylinder");
 	~Cylinder();
 
 	std::vector<std::vector<Point>> getCoordinates() const override;

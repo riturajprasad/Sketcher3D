@@ -1,6 +1,7 @@
 #pragma once
 #include "Shape.h"
 #include "Cuboid.h"
+#include "Cube.h"
 #include "Sphere.h"
 #include "Cylinder.h"
 #include "Pyramid.h"

@@ -10,39 +10,12 @@ void MyFile_skt::write(vector<unique_ptr<Shape>>& myShape)
 	}
 	for (auto& it : myShape)
 	{
-		if (auto b = dynamic_cast<Cuboid*>(it.get())) b->save(out);
-		else if (auto s = dynamic_cast<Sphere*>(it.get()))
-		{
-			out << s->getName() << "\n"
-				<< s->getradius() << "\n";
-		}
-		else if (auto c = dynamic_cast<Cylinder*>(it.get()))
-		{
-			out << c->getName() << "\n"
-				<< c->getradius() << " "
-				<< c->getheight() << "\n";
-		}
-		else if (auto p = dynamic_cast<Pyramid*>(it.get()))
-		{
-			if (p->getName() == "Pyramid")
-			{
-				out << p->getName() << "\n"
-					<< p->getlength() << " "
-					<< p->getbreadth() << " "
-					<< p->getheight() << "\n";
-			}
-			else if (p->getName() == "Regular_Pyramid")
-			{
-				out << p->getName() << "\n"
-					<< p->getlength() << "\n";
-			}
-		}
-		else if (auto c = dynamic_cast<Cone*>(it.get()))
-		{
-			out << c->getName() << "\n"
-				<< c->getradius() << " "
-				<< c->getheight() << "\n";
-		}
+		if (auto c = dynamic_cast<Cuboid*>(it.get())) c->save(out);
+		else if (auto c = dynamic_cast<Cube*>(it.get())) c->save(out);
+		else if (auto s = dynamic_cast<Sphere*>(it.get())) s->save(out);
+		else if (auto c = dynamic_cast<Cylinder*>(it.get())) c->save(out);
+		else if (auto p = dynamic_cast<Pyramid*>(it.get())) p->save(out);
+		else if (auto c = dynamic_cast<Cone*>(it.get())) c->save(out);
 	}
 	out.close();
 	std::cout << "myFile_skt saved successfully!\n";
@@ -60,13 +33,7 @@ void MyFile_skt::read(const string& filename, vector<unique_ptr<Shape>>& myShape
 
 	while (fin >> type)
 	{
-		if (type == "Point")
-		{
-			double x, y, z;
-			fin >> x >> y >> z;
-			myShape.push_back(make_unique<Point>(x, y, z));
-		}
-		else if (type == "Cuboid")
+		if (type == "Cuboid")
 		{
 			double l, b, h;
 			fin >> l >> b >> h;
@@ -76,7 +43,7 @@ void MyFile_skt::read(const string& filename, vector<unique_ptr<Shape>>& myShape
 		{
 			double s;
 			fin >> s;
-			myShape.push_back(make_unique<Cuboid>(s));
+			myShape.push_back(make_unique<Cube>(s));
 		}
 		else if (type == "Sphere")
 		{
@@ -95,12 +62,6 @@ void MyFile_skt::read(const string& filename, vector<unique_ptr<Shape>>& myShape
 			double l, b, h;
 			fin >> l >> b >> h;
 			myShape.push_back(make_unique<Pyramid>(l, b, h));
-		}
-		else if (type == "Regular_Pyramid")
-		{
-			double s;
-			fin >> s;
-			myShape.push_back(make_unique<Pyramid>(s));
 		}
 		else if (type == "Cone")
 		{
@@ -127,41 +88,12 @@ void MyFile_skt::write_map(unordered_map<string, vector<unique_ptr<Shape>>>& All
 		out << pair.first << "\n";
 		for (auto& it : pair.second)
 		{
-			if (auto p = dynamic_cast<Point*>(it.get()))
-			{
-				out << p->x << " " << p->y << " " << p->z << "\n";
-			}
-			else if (auto b = dynamic_cast<Cuboid*>(it.get()))
-			{
-				if (b->getName() == "Cuboid")
-				{
-					out << b->getlength() << " "
-						<< b->getbreadth() << " "
-						<< b->getheight() << "\n";
-				}
-				else if (b->getName() == "Cube") out << b->getlength() << "\n";
-			}
-			else if (auto s = dynamic_cast<Sphere*>(it.get())) out << s->getradius() << "\n";
-			else if (auto c = dynamic_cast<Cylinder*>(it.get()))
-			{
-				out << c->getradius() << " "
-					<< c->getheight() << "\n";
-			}
-			else if (auto p = dynamic_cast<Pyramid*>(it.get()))
-			{
-				if (p->getName() == "Pyramid")
-				{
-					out << p->getlength() << " "
-						<< p->getbreadth() << " "
-						<< p->getheight() << "\n";
-				}
-				else if (p->getName() == "Regular_Pyramid") out << p->getlength() << "\n";
-			}
-			else if (auto c = dynamic_cast<Cone*>(it.get()))
-			{
-				out << c->getradius() << " "
-					<< c->getheight() << "\n";
-			}
+			if (auto c = dynamic_cast<Cuboid*>(it.get())) c->save(out);
+			else if (auto c = dynamic_cast<Cube*>(it.get())) c->save(out);
+			else if (auto s = dynamic_cast<Sphere*>(it.get())) s->save(out);
+			else if (auto c = dynamic_cast<Cylinder*>(it.get())) c->save(out);
+			else if (auto p = dynamic_cast<Pyramid*>(it.get())) p->save(out);
+			else if (auto c = dynamic_cast<Cone*>(it.get())) c->save(out);
 		}
 	}
 	out.close();
@@ -193,13 +125,7 @@ void MyFile_skt::read_map(const std::string& filename, unordered_map<string, vec
 			// Now checking correct first non-space character
 			if (std::isalpha(c)) break;
 
-			if (type == "Point")
-			{
-				double x, y, z;
-				fin >> x >> y >> z;
-				AllShapes["Point"].push_back(make_unique<Point>(x, y, z));
-			}
-			else if (type == "Cuboid")
+			if (type == "Cuboid")
 			{
 				double l, b, h;
 				fin >> l >> b >> h;
@@ -209,7 +135,7 @@ void MyFile_skt::read_map(const std::string& filename, unordered_map<string, vec
 			{
 				double s;
 				fin >> s;
-				AllShapes["Cube"].push_back(make_unique<Cuboid>(s));
+				AllShapes["Cube"].push_back(make_unique<Cube>(s));
 			}
 			else if (type == "Sphere")
 			{
@@ -228,12 +154,6 @@ void MyFile_skt::read_map(const std::string& filename, unordered_map<string, vec
 				double l, b, h;
 				fin >> l >> b >> h;
 				AllShapes["Pyramid"].push_back(make_unique<Pyramid>(l, b, h));
-			}
-			else if (type == "Regular_Pyramid")
-			{
-				double s;
-				fin >> s;
-				AllShapes["Regular_Pyramid"].push_back(make_unique<Pyramid>(s));
 			}
 			else if (type == "Cone")
 			{

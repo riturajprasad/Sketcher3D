@@ -1,16 +1,12 @@
-Point
-0 0 0
 Cuboid
-1 2 3
+l = 1| b = 2| h = 3
 Cube
-4
+s = 4
 Sphere
-2
+r = 2
 Cylinder
-3 5
+r = 3| h = 5
 Pyramid
-3 4 6
-Regular_Pyramid
-4
+l = 3| b = 4| h = 6
 Cone
-3 5
+r = 3| h = 5

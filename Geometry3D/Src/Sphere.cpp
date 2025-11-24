@@ -2,7 +2,7 @@
 #include "Sphere.h"
 #include <cmath>
 
-Sphere::Sphere(const std::string& name = "Sphere", const double& r) : Shape(name), mRadius(r) {}
+Sphere::Sphere(const double& r, const std::string& name) : Shape(name), mRadius(r) {}
 Sphere::~Sphere() {}
 
 std::vector<std::vector<Point>> Sphere::getCoordinates() const

@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Cuboid.h"
 
-Cuboid::Cuboid(const std::string& name = "Cuboid", const double& l, const double& b, const double& h) : 
+Cuboid::Cuboid(const double& l, const double& b, const double& h, const std::string& name) :
 Shape(name), mLength(l), mBreadth(b), mHeight(h) { }
 
 Cuboid::~Cuboid() { }
@@ -28,8 +28,8 @@ std::vector<std::vector<Point>> Cuboid::getCoordinates() const
 void Cuboid::save(std::ostream &fout) const
 {
 	fout << getName() << "\n"
-		 << "l = " << getlength() << " "
-		 << "b = " << getbreadth() << " "
+		 << "l = " << getlength() << "| "
+		 << "b = " << getbreadth() << "| "
 		 << "h = " << getheight() << "\n";
 }
 void Cuboid::saveForGnu(std::ostream &fout) const

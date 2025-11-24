@@ -9,7 +9,7 @@ private:
 	double mHeight;
 
 public:
-	Cone(const std::string& name, const double& r, const double& h);
+	Cone(const double& r, const double& h, const std::string& name = "Cone");
 	~Cone();
 
 	std::vector<std::vector<Point>> getCoordinates() const override;
