@@ -2,109 +2,110 @@
 #include "Sphere.h"
 #include <cmath>
 
-Sphere::Sphere(const Point& cen, const Point& sur) : Shape("Sphere"), center(cen),
-surface((std::sqrt(pow((sur.x - cen.x), 2) + pow((sur.y - cen.y), 2) + pow((sur.z - cen.z), 2))), cen.y, cen.z)
-{ }
-Sphere::Sphere(const double& radius) : Shape("Sphere"), center(0, 0, 0), surface(radius, 0, 0) {}
+Sphere::Sphere(const std::string& name = "Sphere", const double& r) : Shape(name), mRadius(r) {}
 Sphere::~Sphere() {}
 
 std::vector<std::vector<Point>> Sphere::getCoordinates() const
 {
 	std::vector<std::vector<Point>> cord;
+	Point center, surface(mRadius, 0, 0);
 	std::vector<Point> p72;
 	for (int i = 0; i <= N; ++i) {
-		double theta = 2.0 * PI * i / N;
-		double x = center.x + getradius() * std::cos(theta);
-		double y = center.y + getradius() * std::sin(theta);
-		double z = center.z;
+		double theta = 2.0 * M_PI * i / N;
+		double x = center.X() + getradius() * std::cos(theta);
+		double y = center.Y() + getradius() * std::sin(theta);
+		double z = center.Z();
 		p72.emplace_back(x, y, z);
 	}
 	cord.push_back(p72);
 	p72.clear();
 	for (int i = 0; i <= N; ++i) {
-		double theta = 2.0 * PI * i / N;
-		double x = center.x + getradius() * std::cos(theta);
-		double y = center.y;
-		double z = center.z + getradius() * std::sin(theta);
+		double theta = 2.0 * M_PI * i / N;
+		double x = center.X() + getradius() * std::cos(theta);
+		double y = center.Y();
+		double z = center.Z() + getradius() * std::sin(theta);
 		p72.emplace_back(x, y, z);
 	}
 	cord.push_back(p72);
 	p72.clear();
 	for (int i = 0; i <= N; ++i) {
-		double theta = 2.0 * PI * i / N;
-		double x = center.x;
-		double y = center.y + getradius() * std::cos(theta);
-		double z = center.z + getradius() * std::sin(theta);
+		double theta = 2.0 * M_PI * i / N;
+		double x = center.X();
+		double y = center.Y() + getradius() * std::cos(theta);
+		double z = center.Z() + getradius() * std::sin(theta);
 		p72.emplace_back(x, y, z);
 	}
 	cord.push_back(p72);
 	p72.clear();
 	for (int i = 0; i <= N; ++i) {
-		double theta = 2.0 * PI * i / N;
-		double x = center.x + (std::sqrt(3.0) * getradius() / 2.0) * std::cos(theta);
-		double y = center.y + (std::sqrt(3.0) * getradius() / 2.0) * std::sin(theta);
-		double z = center.z + (getradius() / 2.0);
+		double theta = 2.0 * M_PI * i / N;
+		double x = center.X() + (std::sqrt(3.0) * getradius() / 2.0) * std::cos(theta);
+		double y = center.Y() + (std::sqrt(3.0) * getradius() / 2.0) * std::sin(theta);
+		double z = center.Z() + (getradius() / 2.0);
 		p72.emplace_back(x, y, z);
 	}
 	cord.push_back(p72);
 	p72.clear();
 	for (int i = 0; i <= N; ++i) {
-		double theta = 2.0 * PI * i / N;
-		double x = center.x + (std::sqrt(3.0) * getradius() / 2.0) * std::cos(theta);
-		double y = center.y + (std::sqrt(3.0) * getradius() / 2.0) * std::sin(theta);
-		double z = center.z - (getradius() / 2.0);
+		double theta = 2.0 * M_PI * i / N;
+		double x = center.X() + (std::sqrt(3.0) * getradius() / 2.0) * std::cos(theta);
+		double y = center.Y() + (std::sqrt(3.0) * getradius() / 2.0) * std::sin(theta);
+		double z = center.Z() - (getradius() / 2.0);
 		p72.emplace_back(x, y, z);
 	}
 	cord.push_back(p72);
 	p72.clear();
 	for (int i = 0; i <= N; ++i) {
-		double theta = 2.0 * PI * i / N;
-		double x = center.x + (std::sqrt(3.0) * getradius() / 2.0) * std::cos(theta);
-		double y = center.y + (getradius() / 2.0);
-		double z = center.z + (std::sqrt(3.0) * getradius() / 2.0) * std::sin(theta);
+		double theta = 2.0 * M_PI * i / N;
+		double x = center.X() + (std::sqrt(3.0) * getradius() / 2.0) * std::cos(theta);
+		double y = center.Y() + (getradius() / 2.0);
+		double z = center.Z() + (std::sqrt(3.0) * getradius() / 2.0) * std::sin(theta);
 		p72.emplace_back(x, y, z);
 	}
 	cord.push_back(p72);
 	p72.clear();
 	for (int i = 0; i <= N; ++i) {
-		double theta = 2.0 * PI * i / N;
-		double x = center.x + (std::sqrt(3.0) * getradius() / 2.0) * std::cos(theta);
-		double y = center.y - (getradius() / 2.0);
-		double z = center.z + (std::sqrt(3.0) * getradius() / 2.0) * std::sin(theta);
+		double theta = 2.0 * M_PI * i / N;
+		double x = center.X() + (std::sqrt(3.0) * getradius() / 2.0) * std::cos(theta);
+		double y = center.Y() - (getradius() / 2.0);
+		double z = center.Z() + (std::sqrt(3.0) * getradius() / 2.0) * std::sin(theta);
 		p72.emplace_back(x, y, z);
 	}
 	cord.push_back(p72);
 	p72.clear();
 	for (int i = 0; i <= N; ++i) {
-		double theta = 2.0 * PI * i / N;
-		double x = center.x + (getradius() / 2.0);
-		double y = center.y + (std::sqrt(3.0) * getradius() / 2.0) * std::cos(theta);
-		double z = center.z + (std::sqrt(3.0) * getradius() / 2.0) * std::sin(theta);
+		double theta = 2.0 * M_PI * i / N;
+		double x = center.X() + (getradius() / 2.0);
+		double y = center.Y() + (std::sqrt(3.0) * getradius() / 2.0) * std::cos(theta);
+		double z = center.Z() + (std::sqrt(3.0) * getradius() / 2.0) * std::sin(theta);
 		p72.emplace_back(x, y, z);
 	}
 	cord.push_back(p72);
 	p72.clear();
 	for (int i = 0; i <= N; ++i) {
-		double theta = 2.0 * PI * i / N;
-		double x = center.x - (getradius() / 2.0);
-		double y = center.y + (std::sqrt(3.0) * getradius() / 2.0) * std::cos(theta);
-		double z = center.z + (std::sqrt(3.0) * getradius() / 2.0) * std::sin(theta);
+		double theta = 2.0 * M_PI * i / N;
+		double x = center.X() - (getradius() / 2.0);
+		double y = center.Y() + (std::sqrt(3.0) * getradius() / 2.0) * std::cos(theta);
+		double z = center.Z() + (std::sqrt(3.0) * getradius() / 2.0) * std::sin(theta);
 		p72.emplace_back(x, y, z);
 	}
 	cord.push_back(p72);
 	p72.clear();
 	return cord;
 }
-
-double Sphere::getradius() const { return std::fabs(surface.x - center.x); }
-
-std::ostream& operator<<(std::ostream& out, const Sphere& s)
+void Sphere::save(std::ostream& fout) const
 {
-	out << s.getName() << "\n";
-	for (auto& it : s.getCoordinates())
-	{
-		for (auto& cord : it) out << cord.x << " " << cord.y << " " << cord.z << "\n";
-		out << "\n\n";
-	}
-	return out;
+	fout << getName() << "\n"
+		<< "r = " << getradius() << "\n";
 }
+void Sphere::saveForGnu(std::ostream& fout) const
+{
+	fout << getName() << "\n";
+	for (auto& it : getCoordinates())
+	{
+		for (auto& cord : it) fout << cord.X() << " " << cord.Y() << " " << cord.Z() << "\n";
+		fout << "\n\n";
+	}
+}
+
+double Sphere::getradius() const { return mRadius; }

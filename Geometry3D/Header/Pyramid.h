@@ -5,23 +5,20 @@
 class GEOMETRY3D_API Pyramid : public Shape
 {
 private:
-	Point p1;
-	Point p3;
-	Point p2;
-	Point p4;
-	double height;
-	Point h_pt;
+	double mBaseLength;
+	double mBaseBreadth;
+	double mHeight;
 
 public:
-	Pyramid(const Point&, const Point&, const double&);
-	Pyramid(const double&, const double&, const double&);
-	Pyramid(const double&);
+	Pyramid(const std::string& name, const double& bl, const double& bb, const double& h);
 	~Pyramid();
 
 	std::vector<std::vector<Point>> getCoordinates() const override;
+	void save(std::ostream& fout) const override;
+	void saveForGnu(std::ostream& fout) const override;
+
 	double getlength() const;
 	double getbreadth() const;
 	double getheight() const;
 	double getslant_height() const;
 };
-GEOMETRY3D_API std::ostream& operator<<(std::ostream&, const Pyramid&);

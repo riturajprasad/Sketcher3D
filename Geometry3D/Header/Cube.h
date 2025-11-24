@@ -2,21 +2,17 @@
 #include "Export.h"
 #include "Shape.h"
 
-class GEOMETRY3D_API Sphere : public Shape
+class GEOMETRY3D_API Cube : public Shape
 {
 private:
-	double mRadius;
-
+	double mSide;
 public:
-	Sphere(const std::string& name, const double& r);
-	~Sphere();
+	Cube(const std::string& name, const double& s);
+	~Cube();
 
 	std::vector<std::vector<Point>> getCoordinates() const override;
 	void save(std::ostream& fout) const override;
 	void saveForGnu(std::ostream& fout) const override;
 
-	double getradius() const;
-
-private:
-	const int N = 72;
+	double getside() const;
 };

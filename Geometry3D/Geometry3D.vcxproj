@@ -152,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\Cone.h" />
+    <ClInclude Include="Header\Cube.h" />
     <ClInclude Include="Header\Cuboid.h" />
     <ClInclude Include="Header\Cylinder.h" />
     <ClInclude Include="Header\Export.h" />
@@ -165,6 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Cone.cpp" />
+    <ClCompile Include="Src\Cube.cpp" />
     <ClCompile Include="Src\Cuboid.cpp" />
     <ClCompile Include="Src\Cylinder.cpp" />
     <ClCompile Include="Src\dllmain.cpp" />

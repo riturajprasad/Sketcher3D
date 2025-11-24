@@ -2,22 +2,20 @@
 #include "Cone.h"
 #include <cmath>
 
-Cone::Cone(const Point& cen, const Point& sur, const double& h) : Shape("Cone"), center(cen),
-surface((std::sqrt(pow((sur.x - cen.x), 2) + pow((sur.y - cen.y), 2) + pow((sur.z - cen.z), 2))), cen.y, cen.z),
-height(h), h_pt(cen.x, cen.y, h) { }
-Cone::Cone(const double& r, const double& h) : Shape("Cone"), center(0, 0, 0),
-surface(r, 0, 0), height(h), h_pt(0, 0, h) { }
+Cone::Cone(const std::string& name = "Cone", const double& r, const double& h) : Shape(name), 
+mRadius(r), mHeight(h) { }
 Cone::~Cone() {}
 
 std::vector<std::vector<Point>> Cone::getCoordinates() const
 {
 	std::vector<std::vector<Point>> cord;
+	Point center, surface(mRadius, 0, 0), h_pt(0, 0, mHeight);
 	std::vector<Point> p72;
 	for (int i = 0; i <= N; ++i) {
-		double theta = 2.0 * PI * i / N;
-		double x = center.x + getradius() * std::cos(theta);
-		double y = center.y + getradius() * std::sin(theta);
-		double z = center.z;
+		double theta = 2.0 * M_PI * i / N;
+		double x = center.X() + getradius() * std::cos(theta);
+		double y = center.Y() + getradius() * std::sin(theta);
+		double z = center.Z();
 		p72.emplace_back(x, y, z);
 	}
 	cord.push_back(p72);
@@ -25,21 +23,25 @@ std::vector<std::vector<Point>> Cone::getCoordinates() const
 	p72.clear();
 	return cord;
 }
-
-double Cone::getradius() const { return std::fabs(surface.x - center.x); }
-double Cone::getheight() const { return height; }
-double Cone::getslant_height() const
+void Cone::save(std::ostream& fout) const
 {
-	return std::fabs(std::sqrt(pow((h_pt.x - surface.x), 2) + pow((h_pt.y - surface.y), 2) + pow((h_pt.z - surface.z), 2)));
+	fout << getName() << "\n"
+		 << "r = " << getradius() << " "
+		 << "h = " << getheight() << "\n";
+}
+void Cone::saveForGnu(std::ostream& fout) const
+{
+	fout << getName() << "\n";
+	for (auto& it : getCoordinates())
+	{
+		for (auto& cord : it) fout << cord.X() << " " << cord.Y() << " " << cord.Z() << "\n";
+		fout << "\n\n";
+	}
 }
 
-std::ostream& operator<<(std::ostream& out, const Cone& c)
+double Cone::getradius() const { return mRadius; }
+double Cone::getheight() const { return mHeight; }
+double Cone::getslant_height() const
 {
-	out << c.getName() << "\n";
-	for (auto& it : c.getCoordinates())
-	{
-		for (auto& cord : it) out << cord.x << " " << cord.y << " " << cord.z << "\n";
-		out << "\n\n";
-	}
-	return out;
+	return std::sqrt((mRadius * mRadius) + (mHeight * mHeight));
 }

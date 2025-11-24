@@ -2,18 +2,18 @@
 #include "Pyramid.h"
 #include <cmath>
 
-Pyramid::Pyramid(const Point& p1, const Point& p3, const double& h) : Shape("Pyramid"), p1(p1), p3(p3),
-p2(p1.x, p3.y, p1.z), p4(p3.x, p1.y, p1.z), height(h),
-h_pt(((p3.x - p1.x) / 2.0), ((p3.y - p1.y) / 2.0), h) { }
-Pyramid::Pyramid(const double& l, const double& b, const double& h) : Shape("Pyramid"),
-p1(0, 0, 0), p3(l, b, 0), p2(0, b, 0), p4(l, 0, 0), height(h), h_pt((l/2), (b/2), h) { }
-Pyramid::Pyramid(const double& s) : Shape("Regular_Pyramid"), p1(0, 0, 0), p3(s, s, 0), p2(0, s, 0), p4(s, 0, 0),
-height(s), h_pt(s/2, s/2, s) { }
+Pyramid::Pyramid(const std::string& name = "Pyramid", const double& l, const double& b, const double& h) :
+Shape(name), mBaseLength(l), mBaseBreadth(b), mHeight(h) { }
 Pyramid::~Pyramid() {}
 
 std::vector<std::vector<Point>> Pyramid::getCoordinates() const
 {
 	std::vector<std::vector<Point>> cord;
+	Point p1(0, 0, 0);
+	Point p2(0, mBaseBreadth, 0);
+	Point p3(mBaseLength, mBaseBreadth, 0);
+	Point p4(mBaseLength, 0, 0);
+	Point h_pt(0, 0, mHeight);
 	cord.push_back({ p1, p2, p3, p4, p1 });
 	cord.push_back({ h_pt, p1 });
 	cord.push_back({ h_pt, p2 });
@@ -21,22 +21,29 @@ std::vector<std::vector<Point>> Pyramid::getCoordinates() const
 	cord.push_back({ h_pt, p4 });
 	return cord;
 }
-
-double Pyramid::getlength() const { return std::fabs(p4.x - p1.x); }
-double Pyramid::getbreadth() const { return std::fabs(p2.y - p1.y); }
-double Pyramid::getheight() const { return height; }
-double Pyramid::getslant_height() const
+void Pyramid::save(std::ostream& fout) const
 {
-	return std::fabs(std::sqrt(pow((h_pt.x - p1.x), 2) + pow((h_pt.y - p1.y), 2) + pow((h_pt.z - p1.z), 2))); 
+	fout << getName() << "\n"
+		 << "l = " << getlength() << " "
+		 << "b = " << getbreadth() << " "
+		 << "h = " << getheight() << "\n";
+}
+void Pyramid::saveForGnu(std::ostream& fout) const
+{
+	fout << getName() << "\n";
+	for (auto& it : getCoordinates())
+	{
+		for (auto& cord : it) fout << cord.X() << " " << cord.Y() << " " << cord.Z() << "\n";
+		fout << "\n\n";
+	}
 }
 
-std::ostream& operator<<(std::ostream& out, const Pyramid& p)
+double Pyramid::getlength() const { return mBaseLength; }
+double Pyramid::getbreadth() const { return mBaseBreadth; }
+double Pyramid::getheight() const { return mHeight; }
+double Pyramid::getslant_height() const
 {
-	out << p.getName() << "\n";
-	for (auto& it : p.getCoordinates())
-	{
-		for (auto& cord : it) out << cord.x << " " << cord.y << " " << cord.z << "\n";
-		out << "\n\n";
-	}
-	return out;
+	Point p1, h_pt(0, 0, mHeight);
+	return std::fabs(std::sqrt(pow((h_pt.X() - p1.X()), 2) + 
+	pow((h_pt.Y() - p1.Y()), 2) + pow((h_pt.Z() - p1.Z()), 2)));
 }

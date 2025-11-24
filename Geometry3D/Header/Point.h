@@ -1,16 +1,25 @@
 #pragma once
 #include "Export.h"
-#include <iostream>
 
 class GEOMETRY3D_API Point
 {
-public:
-	double x;
-	double y;
-	double z;
+private:
+	double mx;
+	double my;
+	double mz;
 
-	Point(const double&, const double&, const double&);
+public:
+	Point();
+	Point(const double& x, const double& y, const double& z);
 	~Point();
+
+	double X() const;
+	double Y() const;
+	double Z() const;
+
+	void setX(const double& x);
+	void setY(const double& x);
+	void setZ(const double& x);
 
 	bool operator==(const Point&) const;
 };

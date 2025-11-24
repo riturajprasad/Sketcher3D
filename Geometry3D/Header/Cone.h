@@ -5,23 +5,21 @@
 class GEOMETRY3D_API Cone : public Shape
 {
 private:
-	Point center;
-	Point surface;
-	double height;
-	Point h_pt;
+	double mRadius;
+	double mHeight;
 
 public:
-	Cone(const Point&, const Point&, const double&);
-	Cone(const double&, const double&);
+	Cone(const std::string& name, const double& r, const double& h);
 	~Cone();
 
 	std::vector<std::vector<Point>> getCoordinates() const override;
+	void save(std::ostream& fout) const override;
+	void saveForGnu(std::ostream& fout) const override;
+
 	double getradius() const;
 	double getheight() const;
 	double getslant_height() const;
 
 private:
-	const double PI = 3.14159265358979323846;
 	const int N = 72;
 };
-GEOMETRY3D_API std::ostream& operator<<(std::ostream&, const Cone&);

@@ -10,22 +10,7 @@ void MyFile_skt::write(vector<unique_ptr<Shape>>& myShape)
 	}
 	for (auto& it : myShape)
 	{
-		if (auto p = dynamic_cast<Point*>(it.get())) out << *p;
-		else if (auto b = dynamic_cast<Cuboid*>(it.get()))
-		{
-			if (b->getName() == "Cuboid")
-			{
-				out << b->getName() << "\n"
-					<< b->getlength() << " "
-					<< b->getbreadth() << " "
-					<< b->getheight() << "\n";
-			}
-			else if (b->getName() == "Cube")
-			{
-				out << b->getName() << "\n"
-					<< b->getlength() << "\n";
-			}
-		}
+		if (auto b = dynamic_cast<Cuboid*>(it.get())) b->save(out);
 		else if (auto s = dynamic_cast<Sphere*>(it.get()))
 		{
 			out << s->getName() << "\n"
