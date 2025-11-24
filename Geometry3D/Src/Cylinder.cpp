@@ -6,7 +6,7 @@ Cylinder::Cylinder(const Point& cen, const Point& sur, const double& height) : S
 surface((std::sqrt(pow((sur.x - cen.x), 2) + pow((sur.y - cen.y), 2) + pow((sur.z - cen.z), 2))), cen.y, cen.z),
 height(height)
 { }
-Cylinder::Cylinder(const double& radius, const double& height) : Shape("Sphere"), center(0, 0, 0),
+Cylinder::Cylinder(const double& radius, const double& height) : Shape("Cylinder"), center(0, 0, 0),
 surface(radius, 0, 0), height(height) {}
 Cylinder::~Cylinder() {}
 

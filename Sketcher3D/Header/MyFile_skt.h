@@ -10,4 +10,5 @@ class MyFile_skt
 {
 public:
 	void write(std::vector<std::unique_ptr<Object_3D>>& myShape);
+	void read(const std::string& filename, std::vector<std::unique_ptr<Object_3D>>& myShape);
 };
