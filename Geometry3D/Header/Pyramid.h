@@ -15,6 +15,7 @@ private:
 public:
 	Pyramid(const Point&, const Point&, const double&);
 	Pyramid(const double&, const double&, const double&);
+	Pyramid(const double&);
 	~Pyramid();
 
 	std::vector<std::vector<Point>> getCoordinates() const override;

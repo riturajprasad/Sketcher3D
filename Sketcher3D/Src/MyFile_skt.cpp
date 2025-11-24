@@ -15,10 +15,18 @@ void MyFile_skt::write(vector<unique_ptr<Object_3D>>& myShape)
 		if (auto p = dynamic_cast<Point*>(it.get())) out << *p;
 		else if (auto b = dynamic_cast<Cuboid*>(it.get()))
 		{
-			out << b->getName() << "\n"
-				<< b->getlength() << " "
-				<< b->getbreadth() << " "
-				<< b->getheight() << "\n";
+			if (b->getName() == "Cuboid")
+			{
+				out << b->getName() << "\n"
+					<< b->getlength() << " "
+					<< b->getbreadth() << " "
+					<< b->getheight() << "\n";
+			}
+			else if (b->getName() == "Cube")
+			{
+				out << b->getName() << "\n"
+					<< b->getlength() << "\n";
+			}
 		}
 		else if (auto s = dynamic_cast<Sphere*>(it.get()))
 		{
@@ -33,10 +41,18 @@ void MyFile_skt::write(vector<unique_ptr<Object_3D>>& myShape)
 		}
 		else if (auto p = dynamic_cast<Pyramid*>(it.get()))
 		{
-			out << p->getName() << "\n"
-				<< p->getlength() << " "
-				<< p->getbreadth() << " "
-				<< p->getheight() << "\n";
+			if (p->getName() == "Pyramid")
+			{
+				out << p->getName() << "\n"
+					<< p->getlength() << " "
+					<< p->getbreadth() << " "
+					<< p->getheight() << "\n";
+			}
+			else if (p->getName() == "Regular_Pyramid")
+			{
+				out << p->getName() << "\n"
+					<< p->getlength() << "\n";
+			}
 		}
 		else if (auto c = dynamic_cast<Cone*>(it.get()))
 		{
@@ -73,6 +89,12 @@ void MyFile_skt::read(const std::string& filename, vector<unique_ptr<Object_3D>>
 			fin >> l >> b >> h;
 			myShape.push_back(std::make_unique<Cuboid>(l, b, h));
 		}
+		else if (type == "Cube")
+		{
+			double s;
+			fin >> s;
+			myShape.push_back(std::make_unique<Cuboid>(s));
+		}
 		else if (type == "Sphere")
 		{
 			double r;
@@ -91,6 +113,12 @@ void MyFile_skt::read(const std::string& filename, vector<unique_ptr<Object_3D>>
 			fin >> l >> b >> h;
 			myShape.push_back(std::make_unique<Pyramid>(l, b, h));
 		}
+		else if (type == "Regular_Pyramid")
+		{
+			double s;
+			fin >> s;
+			myShape.push_back(std::make_unique<Pyramid>(s));
+		}
 		else if (type == "Cone")
 		{
 			double r, h;
@@ -100,8 +128,6 @@ void MyFile_skt::read(const std::string& filename, vector<unique_ptr<Object_3D>>
 		else
 		{
 			cerr << "Unknown shape type in file: " << type << "\n";
-			// optionally skip the line:
-			// fin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 	}
 }

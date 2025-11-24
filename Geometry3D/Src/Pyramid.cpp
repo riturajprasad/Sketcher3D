@@ -7,6 +7,8 @@ p2(p1.x, p3.y, p1.z), p4(p3.x, p1.y, p1.z), height(h),
 h_pt(((p3.x - p1.x) / 2.0), ((p3.y - p1.y) / 2.0), h) { }
 Pyramid::Pyramid(const double& l, const double& b, const double& h) : Shape("Pyramid"),
 p1(0, 0, 0), p3(l, b, 0), p2(0, b, 0), p4(l, 0, 0), height(h), h_pt((l/2), (b/2), h) { }
+Pyramid::Pyramid(const double& s) : Shape("Regular_Pyramid"), p1(0, 0, 0), p3(s, s, 0), p2(0, s, 0), p4(s, 0, 0),
+height(s), h_pt(s/2, s/2, s) { }
 Pyramid::~Pyramid() {}
 
 std::vector<std::vector<Point>> Pyramid::getCoordinates() const
