@@ -1,12 +1,12 @@
 #include "pch.h"
 #include "Cuboid.h"
 
-Cuboid::Cuboid(const double& l, const double& b, const double& h, const std::string& name) :
-Shape(name), mLength(l), mBreadth(b), mHeight(h) { }
+Cuboid::Cuboid(const std::string& name, double l, double b, double h) :
+Shape("Cuboid", name), mLength(l), mBreadth(b), mHeight(h) { }
 
 Cuboid::~Cuboid() { }
 
-std::vector<std::vector<Point>> Cuboid::getCoordinates() const
+const std::vector<std::vector<Point>>& Cuboid::getCoordinates() const
 {
 	std::vector<std::vector<Point>> cord;
 	Point bottom_p1(0, 0, 0);
@@ -37,7 +37,7 @@ void Cuboid::saveForGnu(std::ostream &fout) const
 	fout << getName() << "\n";
 	for (auto& it : getCoordinates())
 	{
-		for (auto& cord : it) fout << cord.X() << " " << cord.Y() << " " << cord.Z() << "\n";
+		for (auto& cord : it) fout << cord.getX() << " " << cord.getY() << " " << cord.getZ() << "\n";
 		fout << "\n\n";
 	}
 }

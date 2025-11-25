@@ -10,10 +10,10 @@ private:
 	double mHeight;
 
 public:
-	Pyramid(const double& bl, const double& bb, const double& h, const std::string& name = "Pyramid");
+	Pyramid(const std::string& name, double l, double b, double h);
 	~Pyramid();
 
-	std::vector<std::vector<Point>> getCoordinates() const override;
+	const std::vector<std::vector<Point>>& getCoordinates() const override;
 	void save(std::ostream& fout) const override;
 	void saveForGnu(std::ostream& fout) const override;
 

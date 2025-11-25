@@ -1,10 +1,10 @@
 #include "pch.h"
 #include "Cube.h"
 
-Cube::Cube(const double& s, const std::string& name) : Shape(name), mSide(s) {}
+Cube::Cube(const std::string& name, double s) : Shape("Cube", name), mSide(s) {}
 Cube::~Cube() {}
 
-std::vector<std::vector<Point>> Cube::getCoordinates() const
+const std::vector<std::vector<Point>>& Cube::getCoordinates() const
 {
 	std::vector<std::vector<Point>> cord;
 	Point bottom_p1(0, 0, 0);
@@ -33,7 +33,7 @@ void Cube::saveForGnu(std::ostream& fout) const
 	fout << getName() << "\n";
 	for (auto& it : getCoordinates())
 	{
-		for (auto& cord : it) fout << cord.X() << " " << cord.Y() << " " << cord.Z() << "\n";
+		for (auto& cord : it) fout << cord.getX() << " " << cord.getY() << " " << cord.getZ() << "\n";
 		fout << "\n\n";
 	}
 }

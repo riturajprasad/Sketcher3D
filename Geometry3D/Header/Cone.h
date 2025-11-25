@@ -9,10 +9,10 @@ private:
 	double mHeight;
 
 public:
-	Cone(const double& r, const double& h, const std::string& name = "Cone");
+	Cone(const std::string& name, double r, double h);
 	~Cone();
 
-	std::vector<std::vector<Point>> getCoordinates() const override;
+	const std::vector<std::vector<Point>>& getCoordinates() const override;
 	void save(std::ostream& fout) const override;
 	void saveForGnu(std::ostream& fout) const override;
 

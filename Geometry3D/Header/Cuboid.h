@@ -9,10 +9,10 @@ private:
 	double mBreadth;
 	double mHeight;
 public:
-	Cuboid(const double& l, const double& b, const double& h, const std::string& name = "Cuboid");
+	Cuboid(const std::string& name, double l, double b, double h);
 	~Cuboid();
 
-	std::vector<std::vector<Point>> getCoordinates() const override;
+	const std::vector<std::vector<Point>>& getCoordinates() const override;
 	void save(std::ostream &fout) const override;
 	void saveForGnu(std::ostream &fout) const override;
 

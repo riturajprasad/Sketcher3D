@@ -8,13 +8,15 @@
 class GEOMETRY3D_API Shape
 {
 private:
+	std::string mType;
 	std::string mName;
 public:
-	Shape(const std::string& name);
+	Shape(const std::string& type, const std::string& name);
 	virtual ~Shape();
 
-	std::string getName() const;
-	virtual std::vector<std::vector<Point>> getCoordinates() const = 0;
+	const std::string& getName() const;
+	const std::string& getType() const;
+	virtual const std::vector<std::vector<Point>>& getCoordinates() const = 0;
 	virtual void save(std::ostream &fout) const = 0;
 	virtual void saveForGnu(std::ostream &fout) const = 0;
 protected:

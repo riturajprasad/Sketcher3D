@@ -4,22 +4,23 @@
 class GEOMETRY3D_API Point
 {
 private:
-	double mx;
-	double my;
-	double mz;
+	double mX;
+	double mY;
+	double mZ;
 
 public:
 	Point();
-	Point(const double& x, const double& y, const double& z);
+	Point(double x, double y, double z);
 	~Point();
 
-	double X() const;
-	double Y() const;
-	double Z() const;
+	double distance(const Point& other) const;
+	double getX() const;
+	double getY() const;
+	double getZ() const;
 
 	void setX(const double& x);
-	void setY(const double& x);
-	void setZ(const double& x);
+	void setY(const double& y);
+	void setZ(const double& z);
 
 	bool operator==(const Point&) const;
 };

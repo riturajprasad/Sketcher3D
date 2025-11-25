@@ -2,11 +2,11 @@
 #include "Pyramid.h"
 #include <cmath>
 
-Pyramid::Pyramid(const double& l, const double& b, const double& h, const std::string& name) :
-Shape(name), mBaseLength(l), mBaseBreadth(b), mHeight(h) { }
+Pyramid::Pyramid(const std::string& name, double l, double b, double h) :
+Shape("Pyramid", name), mBaseLength(l), mBaseBreadth(b), mHeight(h) { }
 Pyramid::~Pyramid() {}
 
-std::vector<std::vector<Point>> Pyramid::getCoordinates() const
+const std::vector<std::vector<Point>>& Pyramid::getCoordinates() const
 {
 	std::vector<std::vector<Point>> cord;
 	Point p1(0, 0, 0);
@@ -33,7 +33,7 @@ void Pyramid::saveForGnu(std::ostream& fout) const
 	fout << getName() << "\n";
 	for (auto& it : getCoordinates())
 	{
-		for (auto& cord : it) fout << cord.X() << " " << cord.Y() << " " << cord.Z() << "\n";
+		for (auto& cord : it) fout << cord.getX() << " " << cord.getY() << " " << cord.getZ() << "\n";
 		fout << "\n\n";
 	}
 }
@@ -44,6 +44,5 @@ double Pyramid::getheight() const { return mHeight; }
 double Pyramid::getslant_height() const
 {
 	Point p1, h_pt(0, 0, mHeight);
-	return std::fabs(std::sqrt(pow((h_pt.X() - p1.X()), 2) + 
-	pow((h_pt.Y() - p1.Y()), 2) + pow((h_pt.Z() - p1.Z()), 2)));
+	return p1.distance(h_pt);
 }

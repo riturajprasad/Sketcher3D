@@ -8,10 +8,10 @@ private:
 	double mRadius;
 
 public:
-	Sphere(const double& r, const std::string& name = "Sphere");
+	Sphere(const std::string& name, double r);
 	~Sphere();
 
-	std::vector<std::vector<Point>> getCoordinates() const override;
+	const std::vector<std::vector<Point>>& getCoordinates() const override;
 	void save(std::ostream& fout) const override;
 	void saveForGnu(std::ostream& fout) const override;
 

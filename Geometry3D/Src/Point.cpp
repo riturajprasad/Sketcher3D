@@ -1,20 +1,27 @@
 #include "pch.h"
 #include "Point.h"
 #include <tuple>
+#include <cmath>
 
-Point::Point() : mx(0.0), my(0.0), mz(0.0) {}
-Point::Point(const double& x, const double& y, const double& z) : mx(x), my(y), mz(z) {}
+Point::Point() : mX(0.0), mY(0.0), mZ(0.0) {}
+Point::Point(double x, double y, double z) : mX(x), mY(y), mZ(z) {}
 Point::~Point() {}
 
-double Point::X() const { return mx; }
-double Point::Y() const { return my; }
-double Point::Z() const { return mz; }
+double Point::distance(const Point& other) const
+{
+	return std::sqrt((mX - other.mX) * (mX - other.mX) +
+					(mY - other.mY) * (mY - other.mY) +
+					(mZ - other.mZ) * (mZ - other.mZ));
+}
+double Point::getX() const { return mX; }
+double Point::getY() const { return mY; }
+double Point::getZ() const { return mZ; }
 
-void Point::setX(const double& x) { mx = x; }
-void Point::setY(const double& y) { my = y; }
-void Point::setZ(const double& z) { mz = z; }
+void Point::setX(const double& x) { mZ = x; }
+void Point::setY(const double& y) { mY = y; }
+void Point::setZ(const double& z) { mZ = z; }
 
 bool Point::operator==(const Point& p2) const
 {
-	return std::tie(mx, my, mz) == std::tie(p2.mx, p2.my, p2.mz);
+	return std::tie(mX, mY, mZ) == std::tie(p2.mX, p2.mY, p2.mZ);
 }

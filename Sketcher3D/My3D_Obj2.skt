@@ -1,12 +1,12 @@
-Cuboid
+c1
 l = 1| b = 2| h = 3
-Cube
+c1
 s = 4
-Sphere
+s1
 r = 2
-Cylinder
+c1
 r = 3| h = 5
-Pyramid
+p1
 l = 3| b = 4| h = 6
-Cone
+c1
 r = 3| h = 5
