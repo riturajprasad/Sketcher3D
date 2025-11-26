@@ -5,7 +5,7 @@
 Sphere::Sphere(const std::string& name, double r) : Shape("Sphere", name), mRadius(r) {}
 Sphere::~Sphere() {}
 
-const std::vector<std::vector<Point>>& Sphere::getCoordinates() const
+std::vector<std::vector<Point>> Sphere::getCoordinates() const
 {
 	std::vector<std::vector<Point>> cord;
 	Point center, surface(mRadius, 0, 0);

@@ -5,7 +5,7 @@ Cone::Cone(const std::string& name, double r, double h) : Shape("Cone", name),
 mRadius(r), mHeight(h) { }
 Cone::~Cone() {}
 
-const std::vector<std::vector<Point>>& Cone::getCoordinates() const
+std::vector<std::vector<Point>> Cone::getCoordinates() const
 {
 	std::vector<std::vector<Point>> cord;
 	Point center, surface(mRadius, 0, 0), h_pt(0, 0, mHeight);

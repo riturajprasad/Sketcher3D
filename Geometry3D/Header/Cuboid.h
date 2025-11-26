@@ -12,7 +12,7 @@ public:
 	Cuboid(const std::string& name, double l, double b, double h);
 	~Cuboid();
 
-	const std::vector<std::vector<Point>>& getCoordinates() const override;
+	std::vector<std::vector<Point>> getCoordinates() const override;
 	void save(std::ostream &fout) const override;
 	void saveForGnu(std::ostream &fout) const override;
 

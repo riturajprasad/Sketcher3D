@@ -6,7 +6,7 @@ Pyramid::Pyramid(const std::string& name, double l, double b, double h) :
 Shape("Pyramid", name), mBaseLength(l), mBaseBreadth(b), mHeight(h) { }
 Pyramid::~Pyramid() {}
 
-const std::vector<std::vector<Point>>& Pyramid::getCoordinates() const
+std::vector<std::vector<Point>> Pyramid::getCoordinates() const
 {
 	std::vector<std::vector<Point>> cord;
 	Point p1(0, 0, 0);

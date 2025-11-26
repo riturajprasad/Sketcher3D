@@ -16,7 +16,7 @@ public:
 
 	const std::string& getName() const;
 	const std::string& getType() const;
-	virtual const std::vector<std::vector<Point>>& getCoordinates() const = 0;
+	virtual std::vector<std::vector<Point>> getCoordinates() const = 0;
 	virtual void save(std::ostream &fout) const = 0;
 	virtual void saveForGnu(std::ostream &fout) const = 0;
 protected:

@@ -6,7 +6,7 @@ Shape("Cuboid", name), mLength(l), mBreadth(b), mHeight(h) { }
 
 Cuboid::~Cuboid() { }
 
-const std::vector<std::vector<Point>>& Cuboid::getCoordinates() const
+std::vector<std::vector<Point>> Cuboid::getCoordinates() const
 {
 	std::vector<std::vector<Point>> cord;
 	Point bottom_p1(0, 0, 0);

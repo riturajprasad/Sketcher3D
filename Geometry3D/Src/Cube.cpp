@@ -4,7 +4,7 @@
 Cube::Cube(const std::string& name, double s) : Shape("Cube", name), mSide(s) {}
 Cube::~Cube() {}
 
-const std::vector<std::vector<Point>>& Cube::getCoordinates() const
+std::vector<std::vector<Point>> Cube::getCoordinates() const
 {
 	std::vector<std::vector<Point>> cord;
 	Point bottom_p1(0, 0, 0);

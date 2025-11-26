@@ -11,7 +11,7 @@ public:
 	Sphere(const std::string& name, double r);
 	~Sphere();
 
-	const std::vector<std::vector<Point>>& getCoordinates() const override;
+	std::vector<std::vector<Point>> getCoordinates() const override;
 	void save(std::ostream& fout) const override;
 	void saveForGnu(std::ostream& fout) const override;
 

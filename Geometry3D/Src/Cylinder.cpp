@@ -6,7 +6,7 @@ Cylinder::Cylinder(const std::string& name, double r, double h) : Shape("Cylinde
 mRadius(r), mHeight(h) { }
 Cylinder::~Cylinder() {}
 
-const std::vector<std::vector<Point>>& Cylinder::getCoordinates() const
+std::vector<std::vector<Point>> Cylinder::getCoordinates() const
 {
 	std::vector<std::vector<Point>> cord;
 	Point center, surface(mRadius, 0, 0);
